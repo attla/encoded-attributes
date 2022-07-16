@@ -39,10 +39,10 @@ class Factory
     public static function resolve($value)
     {
         if (is_array($value)) {
-            return array_map([get_called_class(), 'resolver'], $value);
+            return array_map([get_called_class(), 'resolve'], $value);
         }
 
-        if (is_string($value) and $encodedId = \DataToken::decode($value)) {
+        if (is_string($value) and $encodedId = DataToken::decode($value)) {
             return $encodedId;
         }
 
