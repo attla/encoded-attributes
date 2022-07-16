@@ -1,0 +1,33 @@
+{
+    "name": "attla/encoded-attributes",
+    "description": "A powerful layer to encode eloquent attributes.",
+    "keywords": [
+        "attla",
+        "laravel",
+        "encoded-attributes",
+        "encoded-model-fields"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Lucas Nicolau",
+            "email": "lucas@octha.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2.5",
+        "data-token": "dev-main"
+    },
+    "autoload": {
+        "psr-4": {
+            "Attla\\EncodedAttributes\\": "src/"
+        }
+    },
+    "laravel": {
+        "providers": [
+            "Attla\\EncodedAttributes\\ServiceProvider"
+        ]
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
