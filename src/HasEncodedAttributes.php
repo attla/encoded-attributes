@@ -115,4 +115,17 @@ trait HasEncodedAttributes
     {
         return parent::resolveSoftDeletableChildRouteBinding($childType, Factory::resolve($value), $field);
     }
+
+    /**
+     * Retrieve the model for a bound value
+     *
+     * @param \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\Relations\Relation $query
+     * @param mixed $value
+     * @param string|null $field
+     * @return \Illuminate\Database\Eloquent\Relations\Relation
+     */
+    public function resolveRouteBindingQuery($query, $value, $field = null)
+    {
+        return parent::resolveRouteBindingQuery($query, Factory::resolve($value), $field);
+    }
 }
