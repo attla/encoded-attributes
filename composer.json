@@ -23,10 +23,12 @@
             "Attla\\EncodedAttributes\\": "src/"
         }
     },
-    "laravel": {
-        "providers": [
-            "Attla\\EncodedAttributes\\ServiceProvider"
-        ]
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Attla\\EncodedAttributes\\ServiceProvider"
+            ]
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true
