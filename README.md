@@ -22,7 +22,11 @@ To automatically turn some attribute into an encoded attribute, set the followin
 
 ```php
 
-// WIP
+// getting existed attribute
+$model->email
+
+// turning an attribute into an encoded attribute
+$model->emailEncoded
 
 ```
 
