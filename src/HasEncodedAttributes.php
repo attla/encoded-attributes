@@ -2,9 +2,14 @@
 
 namespace Attla\EncodedAttributes;
 
-use Illuminate\Support\Enumerable;
-use Illuminate\Contracts\Support\Jsonable;
-use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Support\{
+    Enumerable,
+    Str,
+};
+use Illuminate\Contracts\Support\{
+    Arrayable,
+    Jsonable,
+};
 
 trait HasEncodedAttributes
 {
@@ -52,6 +57,33 @@ trait HasEncodedAttributes
     public function newEloquentBuilder($query)
     {
         return new Builder($query);
+    }
+
+    /**
+     * Get an attribute from the model
+     *
+     * @param string $key
+     * @return mixed
+     */
+    public function getAttribute($key)
+    {
+        $originalKey = $key;
+
+        if ($isEncoded = Str::endsWith($key, $suffixes = ['Encoded', '_encoded'])) {
+            $key .= $id = '#42';
+
+            array_map(function ($suffix) use (&$key, $id) {
+                $key = str_replace($suffix . $id, '', $key);
+            }, $suffixes);
+
+            $key = str_replace($id, '', $key);
+        }
+
+        $value = parent::getAttribute($key);
+
+        return $isEncoded
+            ? (Factory::encode($value) ?: parent::getAttribute($originalKey))
+            : $value;
     }
 
     /**
