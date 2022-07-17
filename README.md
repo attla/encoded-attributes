@@ -18,7 +18,7 @@ composer require attla/encoded-attributes
 
 Add the `Attla\EncodedAttributes\HasEncodedAttributes` trait to your model.
 
-To automatically turn some attribute into an encoded attribute, set the following variable for your model.
+To automatically turn some attribute into an encoded attribute, add a `Encoded` or `_encoded` suffix.
 
 ```php
 
