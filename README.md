@@ -27,6 +27,8 @@ $model->email
 
 // turning an attribute into an encoded attribute
 $model->emailEncoded
+// or
+$model->email_encoded
 
 ```
 
