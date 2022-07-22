@@ -2,14 +2,8 @@
 
 namespace Attla\EncodedAttributes;
 
-use Illuminate\Support\{
-    Enumerable,
-    Str,
-};
-use Illuminate\Contracts\Support\{
-    Arrayable,
-    Jsonable,
-};
+use Attla\Support\Arr as AttlaArr;
+use Illuminate\Support\Str;
 
 trait HasEncodedAttributes
 {
@@ -21,21 +15,7 @@ trait HasEncodedAttributes
      */
     public function __construct($attributes = [])
     {
-        if ($attributes instanceof Enumerable) {
-            $attributes = $attributes->all();
-        } elseif ($attributes instanceof Arrayable) {
-            $attributes = $attributes->toArray();
-        } elseif ($attributes instanceof Jsonable) {
-            $attributes = json_decode($attributes->toJson(), true);
-        } elseif ($attributes instanceof \JsonSerializable) {
-            $attributes = (array) $attributes->jsonSerialize();
-        } elseif ($attributes instanceof \Traversable) {
-            $attributes = iterator_to_array($attributes);
-        } elseif (!is_array($attributes)) {
-            $attributes = (array) $attributes;
-        }
-
-        parent::__construct($attributes);
+        parent::__construct(AttlaArr::toArray($attributes));
     }
 
     /**
