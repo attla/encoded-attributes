@@ -69,7 +69,7 @@ class Builder extends EloquentBuilder
     public function insert(array $values)
     {
         return parent::forwardCallTo(
-            parent::$query,
+            $this->query,
             'insert',
             [Factory::resolve($values)]
         );
