@@ -49,15 +49,11 @@ trait HasEncodedAttributes
     {
         $originalKey = $key;
 
-        if ($isEncoded = Str::endsWith($key, $suffixes = ['Encoded', '_encoded'])) {
-            $key .= $id = '#42';
-
-            array_map(function ($suffix) use (&$key, $id) {
-                $key = str_replace($suffix . $id, '', $key);
-            }, $suffixes);
-
-            $key = str_replace($id, '', $key);
-        }
+        array_map(function ($suffix) use (&$key) {
+            if (Str::endsWith($key, $suffix)) {
+                $key = Str::beforeLast($key, $suffix);
+            }
+        }, ['Encoded', '_encoded']);
 
         $value = parent::getAttribute($key);
 
