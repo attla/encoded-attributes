@@ -57,7 +57,7 @@ trait HasEncodedAttributes
 
         $value = parent::getAttribute($key);
 
-        return $isEncoded
+        return $originalKey != $key
             ? (Factory::encode($value) ?: parent::getAttribute($originalKey))
             : $value;
     }
