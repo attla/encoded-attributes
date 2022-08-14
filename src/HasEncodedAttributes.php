@@ -19,16 +19,6 @@ trait HasEncodedAttributes
     }
 
     /**
-     * Get a encoded id
-     *
-     * @return string
-     */
-    public function getEncodedIdAttribute()
-    {
-        return Factory::encodedId($this);
-    }
-
-    /**
      * Create a new Eloquent query builder for the model
      *
      * @param \Illuminate\Database\Query\Builder $query

@@ -3,22 +3,9 @@
 namespace Attla\EncodedAttributes;
 
 use Attla\DataToken\Facade as DataToken;
-use Illuminate\Database\Eloquent\Model;
 
 class Factory
 {
-    /**
-     * Get a encoded ID
-     *
-     * @param \Illuminate\Database\Eloquent\Model $model
-     * @return string|null
-     */
-    public static function encodedId(Model $model)
-    {
-        $key = $model->getKeyName();
-        return !empty($model->{$key}) ? DataToken::id($model->{$key}) : null;
-    }
-
     /**
      * Get a encoded attribute
      *
